@@ -1,0 +1,22 @@
+language: swift
+xcode_project: Camera.xcodeproj
+xcode_scheme: ArtCamera
+osx_image: xcode10.1
+
+install: bundle install
+script: 
+  - travis/travis.sh
+  - fastlane beta
+
+before_install:
+  - gem install xcpretty
+  - gem install fastlane -NV
+after_success:
+  - travis/travis_after_success.sh
+
+after_failure:
+  - travis/travis_after_failure.sh
+
+branches:
+  only:
+    - master

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n9Z-vh-NLC">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Image Detail View Controller-->
+        <scene sceneID="gEm-RM-SLm">
+            <objects>
+                <viewController id="n9Z-vh-NLC" customClass="ImageDetailViewController" customModule="ArtCamera" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a1W-bD-G0j">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rCT-vp-zOz" customClass="ZoomImageView" customModule="ArtCamera" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UA9-Vp-WmP" customClass="PulsingButton" customModule="ArtCamera" customModuleProvider="target">
+                                <rect key="frame" x="20" y="54" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Lbw-2y-hMw"/>
+                                    <constraint firstAttribute="width" constant="50" id="SO3-aG-N4F"/>
+                                </constraints>
+                                <state key="normal" image="close">
+                                    <color key="titleColor" red="0.0" green="0.63529411764705879" blue="0.99999129772186279" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonAction:" destination="n9Z-vh-NLC" eventType="touchUpInside" id="J66-e2-CYG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rCT-vp-zOz" secondAttribute="bottom" id="1BV-RH-PqV"/>
+                            <constraint firstItem="rCT-vp-zOz" firstAttribute="leading" secondItem="KnE-5n-I1M" secondAttribute="leading" id="5Uw-vB-QgS"/>
+                            <constraint firstItem="UA9-Vp-WmP" firstAttribute="leading" secondItem="KnE-5n-I1M" secondAttribute="leading" constant="20" id="MfU-eO-Ogr"/>
+                            <constraint firstItem="rCT-vp-zOz" firstAttribute="trailing" secondItem="KnE-5n-I1M" secondAttribute="trailing" id="YEs-gG-AFx"/>
+                            <constraint firstItem="rCT-vp-zOz" firstAttribute="top" secondItem="a1W-bD-G0j" secondAttribute="top" id="mAA-d6-yOi"/>
+                            <constraint firstItem="UA9-Vp-WmP" firstAttribute="top" secondItem="KnE-5n-I1M" secondAttribute="top" constant="10" id="sV9-qN-xJV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KnE-5n-I1M"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="UA9-Vp-WmP" id="WLl-FD-eTT"/>
+                        <outlet property="imageView" destination="rCT-vp-zOz" id="DUk-nw-tsf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="upa-fa-hIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="88.405797101449281" y="83.035714285714278"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="close" width="48" height="48"/>
+    </resources>
+</document>
