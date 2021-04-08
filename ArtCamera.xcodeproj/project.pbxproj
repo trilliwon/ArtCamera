@@ -23,7 +23,6 @@
 		E32ABEE12169CD3B00D89263 /* AVCaptureSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32ABEE02169CD3B00D89263 /* AVCaptureSession+Extensions.swift */; };
 		E32ABEE32169CDA200D89263 /* AVCaptureDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32ABEE22169CDA200D89263 /* AVCaptureDevice+Extensions.swift */; };
 		E32ABEE52169DFA000D89263 /* PhotoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32ABEE42169DFA000D89263 /* PhotoCapture.swift */; };
-		E32ABEE7216A03EA00D89263 /* PermissionCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32ABEE6216A03EA00D89263 /* PermissionCheckable.swift */; };
 		E340CA76216A786300C07339 /* PulsingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340CA75216A786300C07339 /* PulsingButton.swift */; };
 		E34591D0215B857200AD6990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34591CF215B857200AD6990 /* AppDelegate.swift */; };
 		E34591D2215B857200AD6990 /* CamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34591D1215B857200AD6990 /* CamViewController.swift */; };
@@ -93,7 +92,6 @@
 		E32ABEE02169CD3B00D89263 /* AVCaptureSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+Extensions.swift"; sourceTree = "<group>"; };
 		E32ABEE22169CDA200D89263 /* AVCaptureDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevice+Extensions.swift"; sourceTree = "<group>"; };
 		E32ABEE42169DFA000D89263 /* PhotoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCapture.swift; sourceTree = "<group>"; };
-		E32ABEE6216A03EA00D89263 /* PermissionCheckable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionCheckable.swift; sourceTree = "<group>"; };
 		E340CA75216A786300C07339 /* PulsingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingButton.swift; sourceTree = "<group>"; };
 		E34591CC215B857200AD6990 /* ArtCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34591CF215B857200AD6990 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,13 +138,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6FCD51A965E9B2E31C3E6298 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		C2AA7F70229CE9F30050C486 /* sample_images */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,7 +171,6 @@
 			children = (
 				E34591CE215B857200AD6990 /* Camera */,
 				E34591CD215B857200AD6990 /* Products */,
-				6FCD51A965E9B2E31C3E6298 /* Pods */,
 				E3323267234EFC5C00B1BA9F /* Recovered References */,
 			);
 			sourceTree = "<group>";
@@ -278,7 +268,6 @@
 				CC0F65C0220AF48C009E2CA5 /* ImageDetailViewController.swift */,
 				E32ABEE42169DFA000D89263 /* PhotoCapture.swift */,
 				E3A7E585216CFA8B00A6A229 /* PhotoCapturable.swift */,
-				E32ABEE6216A03EA00D89263 /* PermissionCheckable.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -411,7 +400,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E32ABEE7216A03EA00D89263 /* PermissionCheckable.swift in Sources */,
 				E3CE6CD2215C9F5E0023B94E /* StringExtensions.swift in Sources */,
 				E3A7E586216CFA8B00A6A229 /* PhotoCapturable.swift in Sources */,
 				E36BEDE42171E749008C22D0 /* FilterRendererable.swift in Sources */,

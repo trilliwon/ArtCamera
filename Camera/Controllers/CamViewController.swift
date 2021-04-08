@@ -10,7 +10,7 @@ import AVFoundation
 import Photos
 import UIKit
 
-class CamViewController: UIViewController, PermissionCheckable {
+class CamViewController: UIViewController {
 
     @IBOutlet private weak var topToolView: UIStackView!
     @IBOutlet private weak var bottomToolView: UIView!
@@ -53,10 +53,8 @@ class CamViewController: UIViewController, PermissionCheckable {
 
         view.addSubview(focusView)
 
-        doAfterPhotoPermission { [unowned self] hasPermission in
-            if hasPermission {
-                self.photoCapture.setupSession(with: self.preview)
-            }
+        checkForVideo { [unowned self] result in
+            self.photoCapture.setupSession(with: self.preview)
         }
 
         thumbnailImageView.isUserInteractionEnabled = true
@@ -67,12 +65,7 @@ class CamViewController: UIViewController, PermissionCheckable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        doAfterPhotoPermission { [weak self] hasPermission in
-            if hasPermission {
-                self?.photoCapture.startRunning()
-            }
-        }
-
+        photoCapture.startRunning()
         let initialThermalState = ProcessInfo.processInfo.thermalState
         if initialThermalState == .serious || initialThermalState == .critical {
             DispatchQueue.main.async { [weak self] in
@@ -82,12 +75,8 @@ class CamViewController: UIViewController, PermissionCheckable {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        doAfterPhotoPermission { [weak self] hasPermission in
-            if hasPermission {
-                self?.photoCapture.stopRunning()
-            }
-        }
         super.viewWillDisappear(animated)
+        photoCapture.stopRunning()
     }
 
     // MARK: status bar
@@ -221,6 +210,49 @@ class CamViewController: UIViewController, PermissionCheckable {
             photoCapture.zoom(by: Float(lastZoomFactor))
         default:
             break
+        }
+    }
+
+    private func checkForVideo(completion: ((Bool) -> Void)?) {
+        let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        if case .authorized = status {
+            completion?(true)
+        } else {
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                DispatchQueue.main.async {
+                    completion?(granted)
+                }
+            }
+        }
+    }
+
+    private func checkForPhotoLibrary(completion: ((Bool) -> Void)?) {
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .authorized:
+            completion?(true)
+        case .limited:
+            completion?(true)
+        case .restricted:
+            alert(message: "Video Permission Denied", okTitle: "Ok") {
+                completion?(false)
+            }
+        case .denied:
+            alert(message: "Video Permission Denied", okTitle: "Ok") {
+                completion?(false)
+            }
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { [weak self] status in
+                if status != .authorized {
+                    self?.checkForPhotoLibrary(completion: completion)
+                } else {
+                    DispatchQueue.main.async {
+                        completion?(true)
+                    }
+                }
+            }
+        @unknown default:
+            fatalError()
+
         }
     }
 }
